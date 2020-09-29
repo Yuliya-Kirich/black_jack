@@ -1,7 +1,7 @@
 require_relative '../lib/bot'
 require_relative '../app/user'
 require_relative '../app/money'
-require_relative '../lib/playing_card_obj_type'
+require_relative '../model/card_distribution_model'
 
 module NavigatorsFirstHelper
   extend Bot
@@ -14,7 +14,7 @@ module NavigatorsFirstHelper
   counting_money = Money.new
   smart_bot_count_money :third, counting_money.money
   bot :fourth
-  r = []
-  r << PlayingCardObjType::ACE
-  puts r
+  user_input.issued_card
+  user_input.value_of_card
+  #user_input.print_cost
 end

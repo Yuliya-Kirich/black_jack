@@ -1,5 +1,4 @@
 module PlayingCardObjType
-
                ACE = 11,
                KING = 10,
                QUEEN = 10,
@@ -12,7 +11,4 @@ module PlayingCardObjType
                FIVE = 5,
                FOUR = 4,
                THREE = 3
-
-
-
 end
