@@ -15,6 +15,5 @@ module NavigatorsFirstHelper
   smart_bot_count_money :third, counting_money.money
   bot :fourth
   user_input.issued_card
-  user_input.value_of_card
-  #user_input.print_cost
+
 end
