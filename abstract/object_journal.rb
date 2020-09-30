@@ -25,6 +25,6 @@ class ObjectJournal
     suit_card.each do |key|
       complect_type.each { |value| @issued_suits_card << [key => value] }
     end
-    puts @issued_suits_card.to_a.shuffle!.take(4)
+    return @issued_suits_card.to_a.shuffle!.take(4)
   end
 end
