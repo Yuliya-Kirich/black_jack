@@ -15,14 +15,19 @@ class User
     issued_card_player = ObjectJournal.new
     issued_card_player.issued_suits_card
     variable = issued_card_player.mix
-    if self.class == PlayerRole
-     PlayerPlayingCard.new(variable)
-    end
-    issued_card_diller(variable)
+    return variable
   end
 
   def issued_card_diller(variable)
     DillerPlayingCard.new(variable)
     puts 'Карты Diller:  ** **'
   end
+
+  def new_player
+    df = PlayerPlayingCard.new(issued_card)
+    issued_card_diller(issued_card) if self.class == PlayerRole
+    return df
+  end
+
+
 end
