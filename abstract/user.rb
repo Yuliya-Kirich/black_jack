@@ -28,6 +28,4 @@ class User
     issued_card_diller(issued_card) if self.class == PlayerRole
     return df
   end
-
-
 end

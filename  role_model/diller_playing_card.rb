@@ -1,12 +1,9 @@
-class DillerPlayingCard
+require_relative 'player_playing_card'
+class DillerPlayingCard < PlayerPlayingCard
   attr_accessor :card_set
   def initialize(card_set)
-    @card_set = card_set
-    view
-  end
-
-  private
-  def view
-    return @card_set[2..4]
+    super
+    @sum_card = 0
+    @user_card = nil
   end
 end

@@ -22,9 +22,14 @@ module NavigatorsStart
   bot :fourth
   user_input.issued_card
   new_card_user = user_input.new_player
-  new_card_user.view_first
-  new_card_user.sum_of_points
+   new_card_user.view_first
+   new_card_user.show_card
   new_card_user.notification_counter
+  diller_input.issued_card
+  new_card_diller_user = diller_input.new_player
+  new_card_diller_user.view_first
+  new_card_diller_user.show_card
+  new_card_diller_user.notification_counter
 
   loop do
     bot :fifth
@@ -33,9 +38,22 @@ module NavigatorsStart
       new_card_user.view_add_card
     else
       puts '  - Нет, спасибо.  '
-      new_card_user.view_first
+      new_card_user.show_card
       new_card_user.notification_counter
       break
       end
+  end
+
+  loop do
+    bot :six
+    d = gets.chomp.to_i
+    if d == 1
+      new_card_diller_user.view_add_card
+    else
+      puts '  - Нет, спасибо.  '
+      new_card_diller_user.show_card
+      new_card_diller_user.notification_counter
+      break
+    end
   end
 end
