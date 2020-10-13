@@ -13,7 +13,6 @@ require_relative '../role_model/diller_playing_card'
 
 module NavigatorsStart
   extend Bot
-
   bot :first
   user_input = PlayerRole.new(gets.chomp)
   smart_bot :second, user_input.name
@@ -51,10 +50,9 @@ module NavigatorsStart
         new_card_user.view_add_card
         # new_card_user.show_card
         new_card_user.notification_counter(user_input)
-        puts 'Diller'
-        bot :seven
-        dd = gets.chomp.to_i
-        if dd == 1
+        puts 'Diller ход:'
+        if new_card_diller_user.sum_card < 17
+          puts 'Берет одну карту'
           new_card_diller_user.view_add_card
         else
           bot :eight
@@ -78,7 +76,7 @@ module NavigatorsStart
     end
 
     puts 'Карты Diller: '
-    new_card_diller_user.show_card
+    # new_card_diller_user.show_card
     new_card_diller_user.notification_counter(diller_input)
     if ((new_card_user.winner > new_card_diller_user.winner) || (new_card_diller_user.winner > 21)) && (new_card_user.winner < 22)
       user_counting_money.money += 20

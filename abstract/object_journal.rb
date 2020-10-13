@@ -1,4 +1,3 @@
-
 class ObjectJournal
   attr_accessor :issued_suits_card
   def initialize
