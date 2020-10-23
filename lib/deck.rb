@@ -3,25 +3,27 @@
 require_relative 'card'
 
 class Deck
-  attr_accessor :issued_suits_card
+  attr_accessor :cards
 
   def initialize
-    @issued_suits_card = []
+    @cards = generate_cards
   end
 
-  def shuffle_cards
-    ::Card::VALUE.each { |key| ::Card::SUIT.each { |suit_card| @issued_suits_card << [key => suit_card] } }
-    @issued_suits_card.to_a.shuffle!
+  def generate_cards
+    Card::SUIT.each_with_object([]) do |suit, array|
+      Card::VALUE.each do |value|
+        array << Card.new(value, suit)
+      end
+    end.shuffle!
   end
 
   def select_card
-    @issued_suits_card[0]
+    @cards[0]
   end
 
   def give_card
-    @issued_suits_card.delete(@issued_suits_card[0])
+    @cards.delete(@cards[0])
   end
-
   end
 
 

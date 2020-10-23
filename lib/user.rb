@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class User
-  attr_accessor :name, :money
+  attr_accessor :name, :money, :hand
 
-  def initialize(name)
+  def initialize(name, hand = nil)
     @name = name
     @money = 100
+    @hand = hand
   end
 
   def show
-    puts "В банке #{@money} $"
+    "В банке #{@money} $"
   end
 end

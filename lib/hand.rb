@@ -3,32 +3,28 @@
 class Hand
   attr_accessor :sum_card, :cards_on_hand
 
-  def initialize
+  def initialize(cards_on_hand)
     @sum_card = 0
-    @cards_on_hand = []
-  end
-
-  def add_card(add)
-    add.each { |set_value| @cards_on_hand << set_value.to_a }
-    @cards_on_hand.flatten!
+    @cards_on_hand = [cards_on_hand]
   end
 
   def sum
     @sum_card = 0
-    @cards_on_hand.each_with_index do |c, key|
-      @sum_card += c.to_i if (key == 1) || (key == 4) || (key == 7)
+    @cards_on_hand.each do |c|
+      @sum_card += Card::VALUE_MAPPING[c.suit[0]]
     end
   end
 
   def aces_recount
-    ace_count = @cards_on_hand.count(:ace)
-    @sum_card = @sum_card - (11 * ace_count) + (2 * ace_count) if !ace_count.zero? && @sum_card > 21
+    @cards_on_hand.each do |f|
+      ace_count = + f.suit.count(:ace)
+      @sum_card = @sum_card - (11 * ace_count) + (2 * ace_count) if !ace_count.zero? && @sum_card > 21
+    end
   end
 
-  def show_card
-    @cards_on_hand.each_with_index do |c, key|
-      print ::Card::VALUE_MAPPING[c] if ::Card::VALUE_MAPPING.include?(c)
-      print c if ((key + 1) % 3).zero? && key != 0
+  def show
+    @cards_on_hand.each_with_object([]) do |cards, array|
+      array <<  "#{cards.suit[1]}#{cards.value}"
     end
   end
 end

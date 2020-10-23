@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'bot_interface/game_progress'
+require_relative 'bot_interface/start'
 
 class Main
-  GameProgress.new
+  Start.new
 end
